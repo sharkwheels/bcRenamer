@@ -2,6 +2,7 @@
 
 import random
 import re
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from twython import Twython, TwythonError #may not need this at all
 import psycopg2
