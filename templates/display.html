@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ <a name="top"></a>
+ 
+   <article>
+   		<a name="thing"></a>
+    	<!--<h2>h2</h2>
+    	<h3>h3</h3>-->
+   	 	<h2>{{ firstName }} {{ lastName }}</h2>
+    
+	    <form>
+			<input class="btn" TYPE="button" onClick="history.go(0)" VALUE="Give Me Another One">
+		</form>
+
+		<p class="tweetBtn">
+		<a href="https://twitter.com/share" class="twitter-share-button" 
+			data-count="none" 
+			data-hashtags="CumberbatchRenamer" 
+			data-text="Y'know, that actor: {{ firstName }} {{ lastName }}">Tweet This</a>
+		
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</p>
+	</article>
+
+	
+
+{% endblock %}
