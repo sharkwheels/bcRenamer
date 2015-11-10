@@ -1,1 +1,1 @@
-web: gunicorn renameWeb:app --log-file=-
+web: gunicorn app:app --log-file=-
