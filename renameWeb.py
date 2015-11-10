@@ -18,25 +18,8 @@ app.config['TRAP_BAD_REQUEST_ERRORS'] = True
 urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
-"""
-# database local
+### database heroku
 con = None
-try:
-	con = psycopg2.connect(database='cbrenamer', user='nadinelessio')
-	cur = con.cursor() #used to go over records
-	cur.execute('SELECT version()')         # grabs the current versio  
-	ver = cur.fetchone()					#variable for that	
-	print ver 
-except psycopg2.DatabaseError, e:
-	if con:
-		con.rollback()
-	print 'Error %s' % e
-"""
-
-#database heroku
-
-con = None
-
 try:
 
 	con = psycopg2.connect(
@@ -90,15 +73,10 @@ def makeName():
 @app.route("/",methods=['GET','POST'])
 
 def main():
-	
 	finalName = makeName()
 	firstName = finalName[0]
 	lastName = finalName[1]
-
-	testName = "something"
-
 	return render_template('display.html',firstName=firstName, lastName=lastName)
-
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -106,6 +84,5 @@ def page_not_found(e):
 
 ### RUN IT ####################################################################
 
-if __name__ == '__main__': # If we're executing this app from the command line
-    #app.run("127.0.0.1", port = 3000, debug=True, use_reloader=False)
+if __name__ == '__main__': 
     app.run()
